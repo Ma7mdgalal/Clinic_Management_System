@@ -811,7 +811,7 @@ Acceptance Criteria:
 
 ---
 
-**CMS-002 — Configure SQL Server & EF Core**
+**CMS-002 — Configure SQL Server, EF Core & Serilog Foundation**
 
 Requirements:
 
@@ -819,12 +819,19 @@ Requirements:
 - Create DbContext.
 - Configure dependency injection.
 - Create the initial migration.
+- Configure Serilog as the application's logging provider.
+- Enable structured console logging for application startup, errors, and important technical events.
+- Ensure logging configuration is read from application configuration where appropriate.
+- Do not log passwords, JWT tokens, or unnecessary patient-sensitive data.
 
 Acceptance Criteria:
 
 - Application can connect to SQL Server.
 - Migration is generated successfully.
 - Database can be created/updated.
+- Serilog is active when the API starts.
+- Startup and unhandled error events produce structured log entries.
+- Sensitive credentials and patient data are not written to logs.
 
 ---
 
@@ -980,7 +987,9 @@ Improve quality and prepare the API for real usage.
 
 **CMS-028 — Structured API responses**
 
-**CMS-029 — Logging**
+**CMS-029 — Production logging improvements**
+
+Expand the Serilog foundation established in CMS-002 with production-ready logging concerns, such as request logging, correlation/trace identifiers where useful, log-level review, and verification that sensitive data remains excluded.
 
 **CMS-030 — API documentation**
 
