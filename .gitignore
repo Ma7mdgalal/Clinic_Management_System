@@ -2,6 +2,7 @@
 [Bb]in/
 [Oo]bj/
 TestResults/
+Logs/
 
 # IDE and user-specific files
 .vs/
