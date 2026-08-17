@@ -1,3 +1,6 @@
+using Clinic.Infrastructure.Configuration;
+using Clinic.Infrastructure.Data;
+using Clinic.Infrastructure.identity;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -22,6 +25,23 @@ try
         .Enrich.WithEnvironmentName();
 
     });
+
+    builder.Services.ConfigureDatabase(builder.Configuration);
+    builder.Services.AddIdentity<AppUser, ApplicationRole>(options =>
+    {
+        //Password policy
+        options.Password.RequiredLength = 8;
+        options.Password.RequireDigit = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireNonAlphanumeric = false;
+
+        // Lockout
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+
+        //         // User
+        ; options.User.RequireUniqueEmail = true;
+    }).AddEntityFrameworkStores<AppDbContext>();
 
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
@@ -50,11 +70,14 @@ try
     app.Run();
 
 }
+catch (HostAbortedException)
+{
+    // EF Core design-time tooling intentionally aborts the host after resolving services.
+}
 catch (Exception ex)
 {
     Log.Fatal(ex, "Application terminated unexpectedly");
     throw;
-
 }
 finally
 {
