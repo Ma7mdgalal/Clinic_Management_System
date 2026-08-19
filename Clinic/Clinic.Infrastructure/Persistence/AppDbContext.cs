@@ -1,3 +1,4 @@
+using Clinic.Domain.Models;
 using Clinic.Infrastructure.identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -20,6 +21,9 @@ namespace Clinic.Infrastructure.Data
 
 
         }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
+        public DbSet<Patient> Patients { get; set; }
 
     }
 }

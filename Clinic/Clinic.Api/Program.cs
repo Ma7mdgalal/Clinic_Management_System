@@ -26,6 +26,7 @@ try
 
     });
 
+
     builder.Services.ConfigureDatabase(builder.Configuration);
     builder.Services.AddIdentity<AppUser, ApplicationRole>(options =>
     {

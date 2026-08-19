@@ -5,6 +5,8 @@ namespace Clinic.Infrastructure.identity
 {
     public class AppUser : IdentityUser<string>
     {
+        // create 
+
         
     }
 }

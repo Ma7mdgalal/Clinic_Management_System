@@ -1,7 +1,5 @@
 
 using Clinic.Infrastructure.Data;
-using Clinic.Infrastructure.identity;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +14,7 @@ namespace Clinic.Infrastructure.Configuration
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
         }
     }
 }
