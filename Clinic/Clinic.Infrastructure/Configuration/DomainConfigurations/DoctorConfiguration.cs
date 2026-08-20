@@ -16,7 +16,7 @@ namespace Clinic.Infrastructure.Configuration.DomainConfigurations
             builder.Property(d => d.LastName).IsRequired().HasMaxLength(100);
             builder.Property(d => d.SpecialtyId).IsRequired();
             builder.Property(d => d.LicenseNumber).IsRequired().HasMaxLength(50);
-            builder.Property(d => d.ConsultationFee).IsRequired();
+            builder.Property(d => d.ConsultationFee).HasPrecision(18, 2).IsRequired();
             builder.Property(d => d.IsActive).IsRequired();
             // Indexes for performance optimization
             builder.HasIndex(d => d.LicenseNumber).IsUnique(); // Assuming one-to-one relationship with User

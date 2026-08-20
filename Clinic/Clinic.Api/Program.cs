@@ -44,6 +44,9 @@ try
         ; options.User.RequireUniqueEmail = true;
     }).AddEntityFrameworkStores<AppDbContext>();
 
+    // Dependency Injection
+    builder.Services.AddInfrastructure();
+
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();

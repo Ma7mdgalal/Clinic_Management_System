@@ -5,8 +5,9 @@ namespace Clinic.Infrastructure.identity
 {
     public class AppUser : IdentityUser<string>
     {
-        // create 
-
-        
+        public AppUser()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
     }
 }

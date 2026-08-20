@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Clinic.Infrastructure.Data
 {
-    public class AppDbContext : IdentityDbContext<AppUser, ApplicationRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
