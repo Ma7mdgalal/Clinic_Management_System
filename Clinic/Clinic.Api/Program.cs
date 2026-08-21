@@ -1,3 +1,4 @@
+using Clinic.Api.Extensions;
 using Clinic.Infrastructure.Configuration;
 using Clinic.Infrastructure.Data;
 using Clinic.Infrastructure.identity;
@@ -28,21 +29,9 @@ try
 
 
     builder.Services.ConfigureDatabase(builder.Configuration);
-    builder.Services.AddIdentity<AppUser, ApplicationRole>(options =>
-    {
-        //Password policy
-        options.Password.RequiredLength = 8;
-        options.Password.RequireDigit = true;
-        options.Password.RequireUppercase = true;
-        options.Password.RequireNonAlphanumeric = false;
+    builder.Services.ConfigureIdentity();
+    builder.Services.ConfigureJwt(builder.Configuration);
 
-        // Lockout
-        options.Lockout.MaxFailedAccessAttempts = 5;
-        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
-
-        //         // User
-        ; options.User.RequireUniqueEmail = true;
-    }).AddEntityFrameworkStores<AppDbContext>();
 
     // Dependency Injection
     builder.Services.AddInfrastructure();
@@ -66,7 +55,7 @@ try
     }
 
     app.UseHttpsRedirection();
-
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapControllers();

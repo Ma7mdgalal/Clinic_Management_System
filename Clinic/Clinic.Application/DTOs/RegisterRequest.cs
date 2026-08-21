@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Clinic.Application.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace Clinic.Application.DTOs
 {
@@ -9,5 +10,7 @@ namespace Clinic.Application.DTOs
 
         [EmailAddress]
         public required string Email { get; set; }  
+
+        public string? Role { get; set; }
     }
 }

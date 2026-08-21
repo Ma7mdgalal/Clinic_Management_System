@@ -1,6 +1,7 @@
-﻿using Clinic.Application.DTOs;
+﻿using System.Security.Claims;
+using Clinic.Application.DTOs;
 using Clinic.Application.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic.Api.Controllers
@@ -31,7 +32,7 @@ namespace Clinic.Api.Controllers
             {
                 return BadRequest(result.Errors);
             }
-            return Ok(result.Success);
+            return Ok(new { Success = result.Success, Token = result.Token });
         }
         
 // Login User
@@ -43,7 +44,17 @@ namespace Clinic.Api.Controllers
             {
                 return Unauthorized(result.Errors);
             }
-            return Ok(result.Success);
+            return Ok(new { Success = result.Success, Token = result.Token });
+        }
+        // Test endpoint to check if the user is authenticated
+        [HttpGet("test")]
+        [Authorize(Policy = "RequireAdmin")]
+        public IActionResult Test()
+        {
+            var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            return Ok(new { message = "You are authenticated!" , userEmail = userEmail, userName = userName, role = role });
         }
        
 

@@ -19,7 +19,6 @@ namespace Clinic.Infrastructure.Data
 
             builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
 
-
         }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
