@@ -927,6 +927,8 @@ Before Sprint 3 can be approved, review CMS-010 through CMS-014 together for:
 - Database uniqueness constraints and API-level handling of duplicate conflicts with `409 Conflict`.
 - Focused automated tests for important business rules and authorization behavior.
 - Clean migrations, meaningful commits, and a clean working tree.
+- Consistent boundaries between Identity accounts and Doctor/Patient profiles, so duplicated contact data and account lifecycle changes do not silently diverge.
+- Shared, maintainable workflows for creating linked Identity accounts and clinic profiles, without repeating transaction and error-handling logic across services.
 
 > Critical security issues and a task's stated acceptance criteria must be fixed within that task; this checklist is an additional cross-task review gate, not a reason to defer them.
 
