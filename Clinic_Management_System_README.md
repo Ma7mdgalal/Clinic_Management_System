@@ -915,6 +915,21 @@ Acceptance Criteria:
 - Pagination works.
 - Duplicate constraints are enforced.
 
+### Sprint 3 Completion & Hardening Checklist
+
+Before Sprint 3 can be approved, review CMS-010 through CMS-014 together for:
+
+- Resource authorization that follows the role matrix and does not expose data to unintended roles.
+- Secure account creation: passwords must never be predictable, derived from profile data, returned, or logged.
+- Complete request/response DTOs and validation for required fields, identifiers, emails, phone numbers, and positive monetary values.
+- Correct handling of inactive related resources, such as assigning a doctor only to an active specialty.
+- Deactivation behavior for linked accounts and resources.
+- Database uniqueness constraints and API-level handling of duplicate conflicts with `409 Conflict`.
+- Focused automated tests for important business rules and authorization behavior.
+- Clean migrations, meaningful commits, and a clean working tree.
+
+> Critical security issues and a task's stated acceptance criteria must be fixed within that task; this checklist is an additional cross-task review gate, not a reason to defer them.
+
 ---
 
 ## Sprint 4 — Appointment System
