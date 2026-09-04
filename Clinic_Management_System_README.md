@@ -904,6 +904,21 @@ Implement the main clinic resources.
 
 **CMS-012 — Patient CRUD**
 
+### CMS-012 Completion Checklist
+
+Before CMS-012 is accepted:
+
+- Admins and Receptionists can register, update, and view patients as required by the role matrix.
+- A Patient can view only their own profile; patient data is never exposed to unrelated authenticated users.
+- Doctor access to patient data is limited to an authorized clinical relationship when appointment support exists.
+- Creating a patient profile either creates no login account or uses an explicit, secure account-creation/invitation flow. Passwords must never be predictable, derived from patient data, returned, or logged.
+- All supplied patient fields, including Address, are persisted and returned accurately.
+- Logs exclude unnecessary patient-sensitive data such as email, address, date of birth, and emergency contacts.
+- Date of birth is valid and cannot be in the future; textual inputs are trimmed and validated.
+- Deactivation behavior is defined for any linked Identity account.
+- Tests cover authorization, self-profile access, validation, and account/profile creation behavior.
+- The task is committed with clean migration history and a clean working tree.
+
 **CMS-013 — Patient search**
 
 **CMS-014 — Pagination**
