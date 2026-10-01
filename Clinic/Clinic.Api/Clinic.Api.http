@@ -1,6 +1,6 @@
-@Clinic.Api_HostAddress = http://localhost:5214
+# @Clinic.Api_HostAddress = http://localhost:5214
 
-GET {{Clinic.Api_HostAddress}}/api/health
-Accept: application/json
+# GET {{Clinic.Api_HostAddress}}/api/health
+# Accept: application/json
 
-###
+# ###

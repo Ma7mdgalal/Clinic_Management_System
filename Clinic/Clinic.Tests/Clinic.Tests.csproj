@@ -17,4 +17,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <!--
+    The project could not reference a single line of production code before this.
+    Application brings Domain along transitively, but it is listed explicitly because
+    the tests construct Doctor/Patient/Specialty entities directly.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\Clinic.Application\Clinic.Application.csproj" />
+    <ProjectReference Include="..\Clinic.Domain\Clinic.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

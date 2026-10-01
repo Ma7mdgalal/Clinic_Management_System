@@ -11,7 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="4.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.11" />
+    <!--
+      Logging.Abstractions, not Serilog. Application code depends on the ILogger<T>
+      abstraction; only the API host knows that Serilog is the provider behind it.
+      Referencing Serilog here would pin the whole application layer to one logging
+      library and make these services awkward to unit-test.
+    -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.11" />
   </ItemGroup>
 
 </Project>

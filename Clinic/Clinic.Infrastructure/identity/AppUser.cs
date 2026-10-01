@@ -1,10 +1,9 @@
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Clinic.Infrastructure.identity
+namespace Clinic.Infrastructure.identity;
+
+public class AppUser : IdentityUser
 {
-    public class AppUser : IdentityUser
-    {
-        
-    }
+    
 }

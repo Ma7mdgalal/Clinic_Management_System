@@ -906,18 +906,6 @@ Implement the main clinic resources.
 
 ### CMS-012 Completion Checklist
 
-Before CMS-012 is accepted:
-
-- Admins and Receptionists can register, update, and view patients as required by the role matrix.
-- A Patient can view only their own profile; patient data is never exposed to unrelated authenticated users.
-- Doctor access to patient data is limited to an authorized clinical relationship when appointment support exists.
-- Creating a patient profile either creates no login account or uses an explicit, secure account-creation/invitation flow. Passwords must never be predictable, derived from patient data, returned, or logged.
-- All supplied patient fields, including Address, are persisted and returned accurately.
-- Logs exclude unnecessary patient-sensitive data such as email, address, date of birth, and emergency contacts.
-- Date of birth is valid and cannot be in the future; textual inputs are trimmed and validated.
-- Deactivation behavior is defined for any linked Identity account.
-- Tests cover authorization, self-profile access, validation, and account/profile creation behavior.
-- The task is committed with clean migration history and a clean working tree.
 
 **CMS-013 — Patient search**
 
@@ -944,6 +932,21 @@ Before Sprint 3 can be approved, review CMS-010 through CMS-014 together for:
 - Clean migrations, meaningful commits, and a clean working tree.
 - Consistent boundaries between Identity accounts and Doctor/Patient profiles, so duplicated contact data and account lifecycle changes do not silently diverge.
 - Shared, maintainable workflows for creating linked Identity accounts and clinic profiles, without repeating transaction and error-handling logic across services.
+
+
+Before CMS-012 is accepted:
+
+- Admins and Receptionists can register, update, and view patients as required by the role matrix.
+- A Patient can view only their own profile; patient data is never exposed to unrelated authenticated users.
+- Doctor access to patient data is limited to an authorized clinical relationship when appointment support exists.
+- Creating a patient profile either creates no login account or uses an explicit, secure account-creation/invitation flow. Passwords must never be predictable, derived from patient data, returned, or logged.
+- All supplied patient fields, including Address, are persisted and returned accurately.
+- Logs exclude unnecessary patient-sensitive data such as email, address, date of birth, and emergency contacts.
+- Date of birth is valid and cannot be in the future; textual inputs are trimmed and validated.
+- Deactivation behavior is defined for any linked Identity account.
+- Tests cover authorization, self-profile access, validation, and account/profile creation behavior.
+- The task is committed with clean migration history and a clean working tree.
+
 
 > Critical security issues and a task's stated acceptance criteria must be fixed within that task; this checklist is an additional cross-task review gate, not a reason to defer them.
 
